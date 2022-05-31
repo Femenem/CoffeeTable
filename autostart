@@ -1,0 +1,6 @@
+@lxpanel --profile LXDE-pi
+@pcmanfm --desktop --profile LXDE-pi
+#@xscreensaver -no-splash
+point-rpi
+@chromium-browser --start-fullscreen --start-maximized --app=http://localhost:8888
+@unclutter -display :0 -idle 3 -root -noevents
