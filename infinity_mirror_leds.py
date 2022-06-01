@@ -30,17 +30,18 @@ TRANS_BLUE = Color(91, 206, 250)
 TRANS_PINK = Color(245, 169, 184)
 
 
-def transFlagChase(strip, wait_ms=100):
+def transFlagChase(strips, wait_ms=100):
     blue = [0,1,2,9]
     pink = [3,4,7,8]
-    for i in range(strip.numPixels()):
-        last_digit = int(repr(i)[-1])
-        if(last_digit in blue):
-            strip.setPixelColor(i, TRANS_BLUE)
-        elif(last_digit in pink):
-            strip.setPixelColor(i, TRANS_PINK)
-        else:
-            strip.setPixelColor(i, WHITE)
+    for strip in strips:
+        for i in range(strip.numPixels()):
+            last_digit = int(repr(i)[-1])
+            if(last_digit in blue):
+                strip.setPixelColor(i, TRANS_BLUE)
+            elif(last_digit in pink):
+                strip.setPixelColor(i, TRANS_PINK)
+            else:
+                strip.setPixelColor(i, WHITE)
 
     strip.show()
     time.sleep(wait_ms / 1000.0)
@@ -158,4 +159,4 @@ if __name__ == '__main__':
 
     print('Press Ctrl-C to quit.')
     while True:
-        initLeds(strips)
+        transFlagChase(strips)
