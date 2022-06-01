@@ -8,7 +8,7 @@ import atexit
 from rpi_ws281x import Color, PixelStrip, ws
 
 # LED strip configuration:
-LED_BRIGHTNESS = 100
+LED_BRIGHTNESS = 5
 LED_STRIP = ws.SK6812_STRIP
 LED_FREQUENCY_HZ = 800000   # LED signal frequency in hertz (usually 800khz)
 LED_MONITOR_DIRECT_MEMORY_ACCESS = 10
@@ -29,23 +29,27 @@ WHITE = Color(255, 255, 255)
 TRANS_BLUE = Color(91, 206, 250)
 TRANS_PINK = Color(245, 169, 184)
 
-
-def transFlagChase(strips, wait_ms=100):
-    blue = [0,1,2,9]
-    pink = [3,4,7,8]
-    for strip in strips:
-        for i in range(strip.numPixels()):
-            last_digit = int(repr(i)[-1])
-            if(last_digit in blue):
-                strip.setPixelColor(i, TRANS_BLUE)
-            elif(last_digit in pink):
-                strip.setPixelColor(i, TRANS_PINK)
-            else:
-                strip.setPixelColor(i, WHITE)
-
+def transFlagChase(strip, wait_ms=10):
+    for i in range(strip.numPixels()):
+        blue = [0,1,8,9]
+        pink = [2,3,6,7]
+        transFlagLooped(strip, blue, pink, 0)
+        blue = [4,5,6,7]
+        pink = [2,3,8,9]
+        transFlagLooped(strip, blue, pink, strip.numPixels()/2)
     strip.show()
-    time.sleep(wait_ms / 1000.0)
+    time.sleep(wait_ms / 100.0)
         
+def transFlagLooped(strip, blue, pink, led_offset):
+    for i in range(int(strip.numPixels()/2)):
+        led_to_change = int(i+led_offset)
+        last_digit = int(repr(led_to_change)[-1])
+        if(last_digit in blue):
+            strip.setPixelColor(led_to_change, TRANS_BLUE)
+        elif(last_digit in pink):
+            strip.setPixelColor(led_to_change, TRANS_PINK)
+        else:
+            strip.setPixelColor(led_to_change, WHITE)
 
 def colourSet(strip, color, wait_ms=100):
     for i in range(strip.numPixels()):
@@ -121,8 +125,9 @@ def onExit(strips):
 
 def initLeds(strips):
     for strip in strips:
-        colourSet(strip, RED)
+        # colourSet(strip, RED)
         print("set!")
+        transFlagChase(strip)
         # colourSet(strip, TRANS_BLUE)
         # colourSet(strip, TRANS_PINK)
         # colourSet(strip, WHITE)
@@ -159,4 +164,4 @@ if __name__ == '__main__':
 
     print('Press Ctrl-C to quit.')
     while True:
-        transFlagChase(strips)
+        initLeds(strips)
