@@ -29,12 +29,28 @@ WHITE = Color(255, 255, 255)
 TRANS_BLUE = Color(91, 206, 250)
 TRANS_PINK = Color(245, 169, 184)
 
+
+def transFlagChase(strip, wait_ms=100):
+    blue = [0,1,2,9]
+    pink = [3,4,7,8]
+    for i in range(strip.numPixels()):
+        last_digit = int(repr(i)[-1])
+        if(last_digit in blue):
+            strip.setPixelColor(i, TRANS_BLUE)
+        elif(last_digit in pink):
+            strip.setPixelColor(i, TRANS_PINK)
+        else:
+            strip.setPixelColor(i, WHITE)
+
+    strip.show()
+    time.sleep(wait_ms / 1000.0)
+        
+
 def colourSet(strip, color, wait_ms=100):
     for i in range(strip.numPixels()):
         strip.setPixelColor(i, color)
         strip.show()
     time.sleep(wait_ms / 1000.0)
-
 
 
 def colorWipe(strip, color, wait_ms=5):
