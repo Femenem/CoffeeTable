@@ -32,6 +32,152 @@ var config = {
   units: "metric",
 
   modules: [
+      {
+        module: 'MMM-Carousel',
+        position: 'bottom_bar', // Required only for navigation controls
+        config: {
+            transitionInterval: 30000,
+            showPageIndicators: true,
+            showPageControls: true,
+            ignoreModules: ['clock', 'alert'],
+            mode: 'slides',
+            showPageControls: false,
+            slides: {
+                main: ['calendar', 'compliments', 'currentweather', 'weatherforecast', 'newsfeed'],
+                "Stocks and Crypto": ['MMM-CoinMarketCap', 'MMM-Jast'],
+                "Space" : ['MMM-nasaastropic', 'MMM-Globe', 'MMM-EARTH', 'MMM-EARTH-Live', 'MMM-NASA'],
+            }
+        }
+    },
+    // Stocks and Crypto
+    {
+      module: "MMM-Jast",
+      position: "top_right",
+      config: {
+        maxWidth: "100%",
+        updateIntervalInSeconds: 300,
+        fadeSpeedInSeconds: 3.5,
+        scroll: "none", // One of ["none", "vertical", "horizontal"]
+        useGrouping: false,
+        currencyStyle: "symbol", // One of ["code", "symbol", "name"]
+        lastUpdateFormat: "HH:mm",
+        showColors: true,
+        showCurrency: true,
+        showChangePercent: true,
+        showChangeValue: true,
+        showChangeValueCurrency: true,
+        showLastUpdate: false,
+        showPortfolioValue: false,
+        showPortfolioGrowthPercent: false,
+        showPortfolioGrowth: false,
+        numberDecimalsValues: 2,
+        numberDecimalsPercentages: 1,
+        virtualHorizontalMultiplier: 2,
+        stocks: [
+          { name: "Microsoft", symbol: "MSFT"},
+          { name: "Meta", symbol: "FB"},
+          { name: "Google", symbol: "GOOGL" },
+          { name: "Amazon", symbol: "AMZN"},
+          { name: "Apple", symbol: "AAPL"},
+          { name: "Tesla", symbol: "TSLA"},
+          { name: "Paypal", symbol: "PYPL"},
+          { name: "Gamestop", symbol: "GME"},
+          { name: "NVIDIA", symbol: "NVDA"},
+          { name: "AMD", symbol: "AMD"},
+          { name: "Intel", symbol: "INTC"},
+          { name: "Netflix", symbol: "NFLX"},
+          { name: "Disney", symbol: "DIS"},
+          { name: "Warner bros", symbol: "WBD"},
+          { name: "MacDonalds", symbol: "MCD"},
+          { name: "Top 500 companies", symbol: "^GSPC"},
+          { name: "GBP to USD", symbol: "GBPUSD=X"},
+          { name: "GBP to EUR", symbol: "GBPEUR=X"},
+          { name: "Gold", symbol: "GC=F"},
+          { name: "Silver", symbol: "SL=F"},
+          { name: "Crude Oil", symbol: "CL=F"},
+          { name: "Corn", symbol: "ZC=F"},
+        ]
+      }
+    },
+    {
+      module: 'MMM-CoinMarketCap',
+      position: "bottom_left",
+      header: "Cryptocurrencies",
+      config: {
+          apiKey: "${COIN_MARKET_CAP_API_KEY}",
+          currencies: ['bitcoin', 'ethereum', 'litecoin', 'cardano', 'dogecoin', 'monero', 'XRP', 'DAI'],
+          view: 'graphWithChanges',
+          conversion: 'GBP',
+          columns: [ 'logo', 'name', 'price', 'change1h', 'change24h', 'change7d', 'graph', 'priceWithChanges'],
+          showColumnHeaders: true,
+          showRowSeparator: true,
+          fullWidthMode: true,
+          percentChangeColored: true,
+          showCurrencyWithPrice: true,
+          cacheLogos: true,
+  	      graphColored: true,
+          // See below for more Configuration Options
+      }
+    },
+    // Space
+   {
+      module: 'MMM-nasaastropic',
+      position: 'bottom_left',
+      config: {
+              updateInterval: 6*60*60*1000,
+              animationSpeed: 0,
+              header: 'NASA Astronomy Picture',
+              maxlongedge: 300
+      }
+    },
+    {
+      module: 'MMM-Globe',
+      position: 'bottom left',
+      config: {
+        style: 'natColor',
+        imageSize: 300,
+        ownImagePath:'',
+        updateInterval: 10*60*1000
+      }
+    },
+    {
+      module: "MMM-EARTH",
+      position: "center",
+      config:
+        {
+            mode: "Lunar",
+            rotateInterval: 15000,
+            MaxWidth: "50%",
+            MaxHeight: "50%",
+        }
+    },
+    {
+      disabled: false,
+      module: 'MMM-EARTH-Live',
+      position: 'bottom right',
+      config: {
+          height:"270px",
+          width:"480px",
+          useHeader: false,                // true if you want a header
+          header: "",                      // Change in config file. useHeader must be true
+          animationSpeed: 1000,            // fade speed
+      }
+    },
+    {
+      module: 'MMM-NASA',
+      position: 'top_right',
+      config:
+      {
+        search: "Nebula",                // See Config entries for search: (Bottom of ReadMe)
+        infoLength: 400,                 // length of info (mostly for static info)
+        scroll: "yes",                   // yes= scrolling info, no = static info
+        rotateInterval: 5 * 60000,       // 5 minutes default. Must use ms (milliseconds)
+        useHeader: false,
+        header: "Constellations",
+        maxWidth: "300px",               // For description text. Image size using css file.
+        animationSpeed: 3000,            // Image fades in and out
+        }
+    },
     {
       module: "alert",
     },
@@ -45,20 +191,45 @@ var config = {
     },
     {
       module: "calendar",
-      header: "US Holidays",
+      header: "Calendar",
       position: "top_left",
       config: {
+        timeFormat: "absolute",
+        dateFormat: "DD/MM/YYYY",
+        getRelative: 48,
+        urgency: 365,
+        customEvents: [
+          {
+            keyword: 'Birthday',
+            symbol: 'birthday-cake',
+            color: 'Gold',
+          },
+          {
+            keyword: 'Anniversary',
+            symbol: 'heart',
+            color: 'DeepPink',
+          },
+           {
+            keyword: 'Holiday',
+            symbol: 'smile',
+            color: 'White',
+          },
+        ],
         calendars: [
           {
-            symbol: "calendar-check",
-            url: "webcal://www.calendarlabs.com/ical-calendar/ics/76/US_Holidays.ics"
+            symbol: "smile",
+            url: "https://www.officeholidays.com/ics-clean/united-kingdom/england"
+          },
+          {
+            symbol: "calendar",
+            url: "${GOOGLE_CALENDAR_URL}"
           }
         ]
       }
     },
     {
       module: "compliments",
-      position: "lower_third"
+      position: "top_center"
     },
     {
       module: "currentweather",
