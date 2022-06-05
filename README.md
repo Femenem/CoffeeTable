@@ -17,6 +17,12 @@ docker-compose up -d
 - https://github.com/bastilimbach/docker-MagicMirror
 - https://github.com/MichMich/MagicMirror/wiki/3rd-party-modules
 
+### When cloning a submodule:
+
+```sh
+git submodule add <url>
+```
+
 ---
 
 ## Production Only!
