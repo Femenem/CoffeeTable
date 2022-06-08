@@ -144,7 +144,7 @@ def initLeds(strips):
     time.sleep(2)
     colourSetStrips(strips, RED)
     time.sleep(2)
-    colourSetStrips(strips, RED)
+    colourSetStrips(strips, PURPLE)
     time.sleep(2)
 
     # Color wipe animations.
