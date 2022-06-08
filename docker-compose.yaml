@@ -4,9 +4,11 @@ services:
     container_name: magicmirror
     image: bastilimbach/docker-magicmirror
     restart: unless-stopped
+    env_file:
+      - .env
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ~/projects/magicmirror/config:/opt/magic_mirror/config
-      - ~/projects/magicmirror/modules:/opt/magic_mirror/modules
+      - ${WORKING_DIRECTORY}/config:/opt/magic_mirror/config
+      - ${WORKING_DIRECTORY}/modules:/opt/magic_mirror/modules
     ports:
       - 8888:8080

@@ -1,0 +1,21 @@
+[submodule "modules/MMM-Carousel"]
+	path = modules/MMM-Carousel
+	url = https://github.com/shbatm/MMM-Carousel
+[submodule "modules/MMM-Jast"]
+	path = modules/MMM-Jast
+	url = https://github.com/jalibu/MMM-Jast.git
+[submodule "modules/MMM-CoinMarketCap"]
+	path = modules/MMM-CoinMarketCap
+	url = https://github.com/glitch452/MMM-CoinMarketCap.git
+[submodule "modules/MMM-nasaastropic"]
+	path = modules/MMM-nasaastropic
+	url = https://github.com/nebulx29/MMM-nasaastropic
+[submodule "modules/MMM-NASA"]
+	path = modules/MMM-NASA
+	url = https://github.com/mykle1/MMM-NASA
+[submodule "modules/MMM-EARTH-Live"]
+	path = modules/MMM-EARTH-Live
+	url = https://github.com/mykle1/MMM-EARTH-Live
+[submodule "modules/MMM-EARTH"]
+	path = modules/MMM-EARTH
+	url = https://github.com/mykle1/MMM-EARTH.git
