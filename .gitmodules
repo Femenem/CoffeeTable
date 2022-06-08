@@ -19,3 +19,6 @@
 [submodule "modules/MMM-EARTH"]
 	path = modules/MMM-EARTH
 	url = https://github.com/mykle1/MMM-EARTH.git
+[submodule "modules/MMM-Globe"]
+    path = modules/MMM-Globe
+    url= https://github.com/LukeSkywalker92/MMM-Globe.git
