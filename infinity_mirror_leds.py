@@ -8,7 +8,7 @@ import atexit
 from rpi_ws281x import Color, PixelStrip, ws
 
 # LED strip configuration:
-LED_BRIGHTNESS = 5
+LED_BRIGHTNESS = 2
 LED_STRIP = ws.SK6812_STRIP
 LED_FREQUENCY_HZ = 800000   # LED signal frequency in hertz (usually 800khz)
 LED_MONITOR_DIRECT_MEMORY_ACCESS = 10
