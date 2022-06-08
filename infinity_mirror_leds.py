@@ -39,7 +39,7 @@ def transFlagChase(strip, wait_ms=10):
         transFlagLooped(strip, blue, pink, strip.numPixels()/2)
     strip.show()
     time.sleep(wait_ms / 100.0)
-        
+
 def transFlagLooped(strip, blue, pink, led_offset):
     for i in range(int(strip.numPixels()/2)):
         led_to_change = int(i+led_offset)
@@ -128,12 +128,16 @@ def initLeds(strips):
         # colourSet(strip, RED)
         print("set!")
         transFlagChase(strip)
-        # colourSet(strip, TRANS_BLUE)
-        # colourSet(strip, TRANS_PINK)
-        # colourSet(strip, WHITE)
-        # colourSet(strip, TRANS_PINK)
-        # colourSet(strip, TRANS_BLUE)
-        
+        time.sleep(2)
+        colourSet(strip, TRANS_BLUE)
+        time.sleep(2)
+        colourSet(strip, TRANS_PINK)
+        time.sleep(2)
+        colourSet(strip, WHITE)
+        time.sleep(2)
+        colourSet(strip, RED)
+        time.sleep(2)
+
     # Color wipe animations.
     # colorWipe(strip, Color(255, 0, 0))  # Red wipe
     # colorWipe(strip, Color(0, 255, 0))  # Blue wipe
