@@ -22,6 +22,7 @@ LED_COASTER_COUNT = 182        # Number of LED pixels.
 LED_COASTER_PIN = 13           # GPIO pin connected to the pixels (must support PWM!).
 LED_COASTER_CHANNEL = 1
 
+PURPLE = Color(147,112,219)
 RED = Color(255, 0, 0)
 CLEAR = Color(0, 0, 0, 255)
 WHITE = Color(255, 255, 255)
@@ -57,6 +58,12 @@ def colourSet(strip, color, wait_ms=100):
         strip.show()
     time.sleep(wait_ms / 1000.0)
 
+def colourSetStrips(strips, color, wait_ms=100):
+    for strip in strips:
+        for i in range(strip.numPixels()):
+            strip.setPixelColor(i, color)
+        strip.show()
+    time.sleep(wait_ms / 1000.0)
 
 def colorWipe(strip, color, wait_ms=5):
     """Wipe color across display a pixel at a time."""
@@ -128,15 +135,17 @@ def initLeds(strips):
         # colourSet(strip, RED)
         print("set!")
         transFlagChase(strip)
-        time.sleep(2)
-        colourSet(strip, TRANS_BLUE)
-        time.sleep(2)
-        colourSet(strip, TRANS_PINK)
-        time.sleep(2)
-        colourSet(strip, WHITE)
-        time.sleep(2)
-        colourSet(strip, RED)
-        time.sleep(2)
+    time.sleep(2)
+    colourSetStrips(strip, TRANS_BLUE)
+    time.sleep(2)
+    colourSetStrips(strip, TRANS_PINK)
+    time.sleep(2)
+    colourSetStrips(strip, WHITE)
+    time.sleep(2)
+    colourSetStrips(strip, RED)
+    time.sleep(2)
+    colourSetStrips(strip, RED)
+    time.sleep(2)
 
     # Color wipe animations.
     # colorWipe(strip, Color(255, 0, 0))  # Red wipe
