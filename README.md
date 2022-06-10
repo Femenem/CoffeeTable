@@ -1,5 +1,9 @@
 # CoffeeTable
 
+This is a Coffee Table which I made with help from my girlfriend and father
+
+![Infinity Mirror Coffee Table](/docs/img/InfinityMirrorCoffeeTable.gif)
+
 ## Development
 
 ### Note: currently requires the working directory to be ~/projects/CoffeeTable, otherwise config/container volumes will not be read
