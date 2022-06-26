@@ -44,8 +44,7 @@ var config = {
             showPageControls: false,
             slides: {
                 main: ['calendar', 'compliments', 'currentweather', 'weatherforecast', 'newsfeed'],
-                "Stocks and Crypto": ['MMM-CoinMarketCap', 'MMM-Jast'],
-                "Space" : ['MMM-nasaastropic', 'MMM-Globe', 'MMM-EARTH', 'MMM-EARTH-Live', 'MMM-NASA'],
+                "Stocks and Crypto": ['MMM-CoinMarketCap', 'MMM-Jast']
             }
         }
     },
